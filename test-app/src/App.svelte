@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Monaco from "../../src/index.svelte";
+  import Monaco from "../..";
   import {writable} from "svelte/store";
 
   let value = writable("");

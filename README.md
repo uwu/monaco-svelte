@@ -14,7 +14,6 @@ You may use any theme from [*here*](https://github.com/brijeshb42/monaco-themes/
 
 ```svelte
 <script>
-  // TODO: figure out if npm module exports can be svelte files?
   import Monaco from "monaco-svelte";
   import { writable } from "svelte/store";
 
@@ -31,4 +30,6 @@ You may use any theme from [*here*](https://github.com/brijeshb42/monaco-themes/
   width="20rem"
   otherCfg={{}}
 />
+
+<pre><code>{$value}</code></pre>
 ```
