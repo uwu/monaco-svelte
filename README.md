@@ -12,7 +12,7 @@ See below for fairly self explanatory usage. Should have TS defs if you have sve
 
 You may use any theme from [*here*](https://github.com/brijeshb42/monaco-themes/tree/master/themes) by name.
 
-```sveltehtml
+```svelte
 <script>
   // TODO: figure out if npm module exports can be svelte files?
   import Monaco from "monaco-svelte";
