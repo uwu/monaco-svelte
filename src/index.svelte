@@ -51,7 +51,7 @@
 		}
 	}
 
-	$: ed?.updateOptions(otherCfg);
+	$: otherCfg && ed?.updateOptions(otherCfg);
 
 	onDestroy(() => {
 		cancelInit = true;
