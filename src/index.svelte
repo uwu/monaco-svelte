@@ -2,8 +2,10 @@
 	import {onDestroy, onMount} from "svelte";
 	import {Readable, Writable} from "svelte/store";
 	import type {CfgOpts, IStandaloneCodeEditor} from "./types";
+	import type {Monaco} from "@monaco-editor/loader";
 	import {addThemeIfNeeded, initMonacoIfNeeded, monaco} from "./monaco";
 
+	// noinspection JSUnusedGlobalSymbols
 	export let
 		lang: string,
 		value: Readable<string> | Writable<string>,
@@ -11,7 +13,8 @@
 		theme: string = undefined,
 		otherCfg: CfgOpts = {},
 		height: string = "10rem",
-		width: string = "30rem";
+		width: string = "30rem",
+		noCDN: Monaco = undefined;
 
 	let ed: IStandaloneCodeEditor;
 
@@ -20,7 +23,7 @@
 	let elem: HTMLDivElement;
 	let cancelInit = false;
 	onMount(async () => {
-		await initMonacoIfNeeded();
+		await initMonacoIfNeeded(noCDN);
 		await addThemeIfNeeded(theme);
 
 		if (cancelInit) return;
@@ -47,6 +50,8 @@
 			ed.setModel(model);
 		}
 	}
+
+	$: ed?.updateOptions(otherCfg);
 
 	onDestroy(() => {
 		cancelInit = true;
